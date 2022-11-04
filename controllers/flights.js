@@ -14,9 +14,9 @@ function index(req, res) {
     })
 }
 function show(req, res){
-    Flight.find({}, function(err, flights){
-        
-        res.render('/flights/show', {Title: 'Flight Details', flights})
+    Flight.findById(req.params._id, function(err, flight) {
+            console.log(flight)
+            res.render('./flights/show', {Title: 'Flight Details', flight})
     })
 }
 function create(req, res){
