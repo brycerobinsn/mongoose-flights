@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+// require .env
 require('dotenv').config();
 // connect to database with mongoose
 require('./config/database');

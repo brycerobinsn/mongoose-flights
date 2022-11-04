@@ -14,14 +14,17 @@ function index(req, res) {
     })
 }
 function show(req, res){
-    res.render('/flights/show', {Title: 'Flight Details', flight})
+    Flight.find({}, function(err, flights){
+        
+        res.render('/flights/show', {Title: 'Flight Details', flights})
+    })
 }
 function create(req, res){
     const flight = new Flight(req.body)
     flight.save(function(err){
         if (err) return res.redirect('/flights/new')
         console.log(flight)
-        res.redirect('/flights')
+        res.redirect(`/flights/${flight._id}`)
     })
 }
 function newFlight (req, res) {
