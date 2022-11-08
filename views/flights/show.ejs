@@ -7,6 +7,9 @@
     <title><% flight %> </title>
 </head>
 <body>
+    <form action="/flights/<%= flight._id %>?_method=DELETE" class="delete-form" method="POST">
+        <button type="submit">Delete Flight</button>
+    </form>
     <section id="show-page">
         <div>Airline:</div>
         <div><%= flight.airline %> </div>
@@ -17,7 +20,6 @@
         <div>Departs:</div>
         <div><%= flight.departs %> </div>
         <label>Destination:</label>
-        <div> <%= flight.destination %> </div>
         <table>
             <thead>
                 <th>Airport</th>
@@ -33,15 +35,15 @@
                 <%  }); %> 
             </tbody>
         </table> 
-        <form id="new-destination-form" action="/flights/<%= flight._id %>" method="POST">
-            <select name="airport">
+        <form id="new-destination-form" action="/flights/<%= flight._id %>/destinations" method="POST">
+            <select name="destAirport">
                 <option value="DEN">DEN</option>
                 <option value="AUS">AUS</option>
                 <option value="DFW">DFW</option>
                 <option value="LAX">LAX</option>
                 <option value="SAN">SAN</option>
             </select>
-            <input type="datetime-local" name="arrival" value="arrival">
+            <!-- <input type="datetime-local" name="arrival" value="arrival"> -->
             <input type="submit" value="Add Destination">
         </form>
     </section>
