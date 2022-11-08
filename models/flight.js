@@ -6,7 +6,7 @@ const destinationScema = new Schema({
         type: String,
         enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN']
     },
-    arrival: Date,
+    arrival: Date
 })
 const flightSchema = new Schema({
     airline: {
@@ -30,7 +30,7 @@ const flightSchema = new Schema({
         return date
     }
    },
-   destinations: [destinationSchema]
+   destinations: [destinationScema]
 })
 
 

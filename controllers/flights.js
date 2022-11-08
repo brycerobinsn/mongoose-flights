@@ -4,7 +4,9 @@ module.exports = {
     index,
     show,
     new: newFlight,
-    create
+    create,
+    delete: deleteFlight,
+    destination
 }
 
 function index(req, res) {
@@ -29,4 +31,17 @@ function create(req, res){
 }
 function newFlight (req, res) {
     res.render('flights/new', {title: 'Add Flight'})
+}
+function deleteFlight (req, res) {
+    flight.deleteOne(req.params.id)
+    res.redirect('/flights/index')
+}
+function destination (req, res) {
+    Flight.findById(req.params.id, function(err, flight){
+        flight.destinations.airport.push(req.body)
+        console.log(flight.destinations)
+        flight.save(function(err){
+            res.redirect(`/flights/${flights._id}`)
+        })
+    })
 }
